@@ -1,0 +1,112 @@
+/* FONTE POPPINS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin:0;
+    padding:0;
+    border:0;
+    box-sizing:border-box;
+    font-family:'Poppins';
+}
+header {
+    background-color:#000;
+    padding:30px;
+    height:100px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+header .area-logo {
+    max-width:150px;
+}
+header .area-logo img {
+    max-width:100%;
+}
+header .searchPoke input {
+    outline:none;
+    width:300px;
+    padding:5px 10px;
+    border-radius:10px;
+    font-size:18px;
+    letter-spacing:1px;
+}
+header .searchPoke input::placeholder {
+    font-size:18px;
+}
+header .searchPoke {
+    display:flex;
+    align-items:center;
+} 
+header .searchPoke button {
+    padding:7px 10px;
+    border-radius:10px;
+    margin-left:10px;
+    cursor:pointer;
+}
+header select {
+    width:250px;
+    border-radius:5px;
+    padding:5px;
+    font-size:15px;
+    outline:0;
+    cursor:pointer;
+}
+nav {
+    height:100vh;
+    padding:50px;
+}
+.areaPokes {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    height:100%;
+}
+.areaPokes .cardPoke {
+    width:200px;
+    border-radius:20px;
+    margin-bottom:50px;
+    margin-right:20px;
+    cursor:pointer;
+}
+.areaPokes .cardPoke:first-child {
+    display:none;
+}
+.areaPokes .cardPoke:hover {
+    transform:scale(1.1);
+    transition:all ease .2s;
+}
+.areaPokes .cardPoke .areaImage {
+    background-color:#CCC;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    max-width:inherit;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+}
+.areaPokes .cardPoke figure {
+    width:100%;
+}
+.areaPokes .cardPoke figure img {
+    max-width:80%;
+    max-height:80%;
+}
+.areaPokes .cardPoke figure figcaption {
+    color:#CCC;
+}
+.areaPokes .cardPoke .namePoke {
+    margin-top:10px;
+    font-size:25px;
+    font-weight:500;
+}
+.areaPokes .cardPoke .typePoke {
+    display:flex;
+}
+.areaPokes .cardPoke .typePoke .type {
+    padding:2px 5px;
+    background-color:blue;
+    border-radius:5px;
+}
+.areaPokes .cardPoke .typePoke .type:first-child {
+    margin-right:5px;
+}

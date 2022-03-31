@@ -1,0 +1,7 @@
+POKEDEX:
+
+- Adicionar tipos de cada poke 
+- Lupa de pesquisa //
+- Filtro (ordem de menor id, maior id, A-Z, Z-A, Por tipo) 
+- Mostrar info dos pokes ao clicar (weight, stats, moves height)
+- Favoritar com LocalStorage e se estiver vazio dar aviso;

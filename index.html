@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Pokédex</title>
+</head>
+<body>
+    <header>
+        <div class="area-logo">
+            <a href=""><img src="assets/images/logo-poke.png" alt="Logo Pokémon"></a>
+        </div>
+        <form method="" class="searchPoke">
+            <input type="search" placeholder="Buscar Pokémon">
+            <button>Buscar</button>
+        </form>
+        <select name="filterPoke" onchange="filterPoke(value)">
+            <option value="smallestNumber">Menor número primeiro</option>
+            <option value="higherNumber">Maior número primeiro</option>
+            <option value="a-z">A-Z</option>
+            <option value="z-a">Z-A</option>
+        </select>
+    </header>
+
+    <nav>
+        <div class="areaPokes">
+            <div class="cardPoke">
+                <figure>
+                    <div class="areaImage">
+                        <img src="assets/images/pikachu.png" alt="Image Poke">
+                    </div>
+                    <figcaption>--</figcaption>
+                </figure>
+                <div class="namePoke">--</div>
+                <div class="typePoke">
+                    <div class="type">--</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="assets/js/poke.js"></script>
+</body>
+</html>
