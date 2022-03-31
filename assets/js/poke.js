@@ -15,7 +15,7 @@ let pokes = [];
 // FAZENDO REQUISIÇÃO E JOGANDO NA TELA
 async function getPokes() {
     // Loop for para fazer a requisição do tanto de pokemons existentes 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 100; i++) {
         let urlPokes = `https://pokeapi.co/api/v2/pokemon/${i}`;
 
         let results = await fetch(urlPokes);
@@ -31,11 +31,12 @@ getPokes();
 
 
 function removePokes() {
-    let elementCard = qsa('.cardPoke');
     for (let i in elementCard) {
         elementCard[i].parentNode.removeChild(element[i]);
     }
 }
+
+
 
 
 
@@ -63,13 +64,28 @@ function showPokes(pokes) {
         cardPoke.querySelector('figure figcaption').innerHTML = `Nº ${idPoke}`;
         cardPoke.querySelector('.namePoke').innerHTML = poke.name;
 
-        let cardType = '';
-        for (let i = 1; i <= poke.types.length; i++) {
-            cardPoke.querySelector('.typePoke').append(cardType);
-            cardType = cardType = qs('.typePoke .type').cloneNode(true);
-        }
+
         qs('.areaPokes').append(cardPoke);
+        // Abrir modal com informações dos pokémons
+        cardPoke.addEventListener('click', () => {
+            qs('.modalInfoPokes .modalNamePoke').innerHTML = poke.name;
+            qs('.areaInfoPokes img').src = poke.sprites.other.dream_world.front_default;
+
+            qs('.modalInfoPokes').style.opacity = 0
+            qs('.modalInfoPokes').style.display = 'block';
+            setTimeout(() => {
+                qs('.modalInfoPokes').style.opacity = 1;
+            }, 200)
+        })
+        // Fechar modal com informações dos pokémons
+        qs('.closeModal img').addEventListener('click', () => {
+            qs('.modalInfoPokes').style.opacity = 0;
+            setTimeout(() => {
+                qs('.modalInfoPokes').style.display = 'none';
+            }, 200);
+        })
     })
+    
 
 }
 
@@ -115,8 +131,8 @@ function filterPoke(value) {
     switch (value) {
         case 'smallestNumber':
             showPokes(pokes);
-            console.log(pokes);
             break;
+
         case 'higherNumber':
             let higherNumber = [];
             pokes.map((poke) => {
@@ -124,8 +140,8 @@ function filterPoke(value) {
             });
             higherNumber.reverse();
             showPokes(higherNumber);
-            console.log(higherNumber);
             break;
+
         case 'a-z':
             pokes.map((item) => {
                 namePokesAZ.push(item.name);
@@ -138,8 +154,8 @@ function filterPoke(value) {
                 arrayPokesAZ.push(poke);
             });
             showPokes(arrayPokesAZ);
-            console.log(arrayPokesAZ);
             break;
+
         case 'z-a':
             pokes.map((item) => {
                 namePokesZA.push(item.name);
@@ -153,7 +169,6 @@ function filterPoke(value) {
                 arrayPokesZA.push(poke);
             })
             showPokes(arrayPokesZA);
-            console.log(arrayPokesZA);
             break;
     }
 }
