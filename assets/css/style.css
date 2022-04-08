@@ -9,19 +9,32 @@
     font-family:'Poppins';
     text-transform: capitalize;
 }
+/* HEADER */
 header {
+    z-index:2;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
     background-color:#000;
     padding:30px;
-    height:100px;
+    height:80px;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
-header .area-logo {
-    max-width:150px;
+header .areaLogo {
+    width:100px;
+    height:inherit;
 }
-header .area-logo img {
-    max-width:100%;
+header .areaLogo a {
+    display:inline-block;
+    width:100%;
+    height:100%;
+}
+header .areaLogo img {
+    width:100%;
+    max-height:100%;
 }
 header .searchPoke input {
     outline:none;
@@ -31,13 +44,13 @@ header .searchPoke input {
     font-size:18px;
     letter-spacing:1px;
 }
-header .searchPoke input::placeholder {
-    font-size:18px;
-}
 header .searchPoke {
     display:flex;
     align-items:center;
 } 
+header .searchPoke input::placeholder {
+    font-size:18px;
+}
 header .searchPoke button {
     padding:7px 10px;
     border-radius:10px;
@@ -51,33 +64,40 @@ header select {
     font-size:15px;
     outline:0;
     cursor:pointer;
+    margin-right:10px;
+    letter-spacing:1px;
 }
+/* MEIO (PRINCIPAL) */
 nav {
+    margin-top:100px;
     height:100vh;
     padding:50px;
 }
 .areaPokes {
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    height:100%;
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+}
+.areaPokes .warning {
+    width:100%;
+    font-size:30px;
+    font-weight:600;
+    display:none;
 }
 .areaPokes .cardPoke {
-    width:200px;
+    max-width:250px;
     border-radius:20px;
     margin-bottom:50px;
     margin-right:20px;
     cursor:pointer;
 }
-.areaPokes .cardPoke:first-child {
-    display:none;
-}
 .areaPokes .cardPoke:hover {
     transform:scale(1.1);
     transition:all ease .2s;
 }
+.areaPokes .cardPoke:first-child {
+    display:none;
+}
 .areaPokes .cardPoke .areaImage {
-    background-color:#CCC;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -85,13 +105,19 @@ nav {
     border-top-left-radius:20px;
     border-top-right-radius:20px;
 }
+.areaImage .areaFavorites {
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    width:100%;
+}
 .areaPokes .cardPoke figure {
     width:100%;
 }
 .areaPokes .cardPoke figure img {
     max-width:80%;
     max-height:80%;
-}
+}    
 .areaPokes .cardPoke figure figcaption {
     color:#CCC;
 }
@@ -110,59 +136,171 @@ nav {
 }
 .areaPokes .cardPoke .typePoke .type:first-child {
     display:none;
-}
-.areaPokes .cardPoke .typePoke .type:first-child {
     margin-right:5px;
 }
 .modalInfoPokes {
+    background-color:#dadfe8;
+    z-index:1;
     display:none;
-    top:100px;
+    flex-direction:column;
     left:0;
     right:0;
     bottom:0;
-    position: absolute;
+    position:absolute;
     width:100%;
-    height: calc(100vh - 100px);
-    background-color:aliceblue;
+    height: calc(100vh - 80px);
+    justify-content:center;
+    align-items:center;
 }
 .modalInfoPokes .closeModal {
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
+    width:100%;
 }
-.modalInfoPokes .closeModal > img {
-    max-width:30px;
-    margin-right:20px;
+.modalInfoPokes .closeModal .close {
+    font-size:20px;
+    font-weight:500;
+    display:flex;
+    align-items:center;
     cursor:pointer;
 }
-.modalInfoPokes .areaInfoPokes {
-    padding:20px;
+.modalInfoPokes .closeModal .close img {
+    margin:0 10px;
+    max-width:30px;
+}
+.modalInfoPokes .cardInfoPokes {
+    border-radius:10px;
     display:flex;
     flex-direction:column;
-    align-items:center;
-    margin:auto;
-    width:50%;
-    height:100%;
+    width:60%;
+    height: calc(100vh - 20vh);
+    box-shadow:rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }
-.modalInfoPokes .modalNamePoke {
-    font-size:35px;
-    font-weight:500;
+.cardInfoPokes .areaTop {
+    border-top-left-radius:inherit;
+    border-top-right-radius:inherit;
+    background-color:#CCC;
+    height:50%;
+    padding:30px;
 }
-.modalInfoPokes img {
-    margin-top:50px;
-    max-width:350px;
-    max-height:350px;
+.cardInfoPokes .areaBottom {
+    border-bottom-left-radius:inherit;
+    border-bottom-right-radius:inherit;
+    min-height: 50%;
+    height:auto;
+    background-color:#F5F5F5;
+    padding:30px;
 }
-.areaInfoPokes .infoPoke {
-    margin-top:100px;
+.cardInfoPokes .areaTop .areaName {
     display:flex;
-    width:100%;
-    flex-wrap:wrap;
+    justify-content:space-between;
+    color:#F5F5F5;
 }
-.areaInfoPokes .infoPoke > div {
+.cardInfoPokes .areaName .name {
+    font-size:30px;
+    font-weight:700
+}
+.cardInfoPokes .areaName .id {
+    margin-right:10px;
     font-size:20px;
     font-weight:500;
 }
-.areaInfoPokes .infoPoke > div {
-    width:50%;
+.cardInfoPokes .areaTop .types {
+    margin-top:10px;
+    display:flex;
 }
+.cardInfoPokes .areaTop .types .type {
+    font-size:15px;
+    padding:2px 8px;
+    background-color:#F5F5F5;
+    opacity:0.5;
+    border-radius:20px;
+    color:#373737;
+}
+.cardInfoPokes .areaTop .types .type:first-child {
+    margin-right:10px;
+}
+.cardInfoPokes .areaBottom {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.cardInfoPokes .areaBottom img {
+    text-align:center;
+    margin:auto;
+    margin-top:-220px;
+    width:250px;
+    height:250px;
+    margin-bottom:0;
+}
+.cardInfoPokes .areaBottom .infoPokes {
+    margin-top:30px;
+    width:100%;
+    display:flex;
+}
+.cardInfoPokes .areaBottom .infoPokes .info {
+    flex:1;
+}
+.cardInfoPokes .areaBottom .infoPokes .info h3 {
+    max-width:150px;
+    border-bottom:1px solid #000;
+}
+.cardInfoPokes .areaBottom .infoPokes .descInfo {
+    font-size:14px;
+    padding:2px 0;
+    margin-top:5px;
+    max-width:150px;
+    border-bottom:1px solid #CCC;
+    font-weight:500;
+}
+.cardInfoPokes .areaBottom .infoPokes .descInfo span {
+    color:red;
+}
+.cardInfoPokes .areaBottom .infoPokes .descInfo:first-child {
+    margin-top:15px;
+}
+
+/* Responsivity */
+@media only screen and ( max-width:1200px ) {
+    .areaPokes {
+        grid-template-columns:repeat(3, 1fr);
+    }
+}
+@media only screen and ( max-width:900px ) {
+    .areaLogo {
+        display:none;
+    }
+    header select {
+        width:200px;
+    }
+    header .searchPoke {
+        width:200px;
+    }
+}
+@media only screen and ( max-width:650px ) {
+    header {
+        height:auto;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+    header .searchPoke,
+    header select {
+        margin:0;
+    }
+    header .searchPoke {
+        margin-bottom:20px;
+    }
+    header select {
+        width:300px;
+    }
+    .areaPokes {
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
+@media only screen and ( max-width:450px ) {
+    .areaPokes {
+        grid-template-columns:repeat(1, 1fr);
+    }
+    .areaPokes .cardPoke {
+        margin-right:0;
+    }
+} 

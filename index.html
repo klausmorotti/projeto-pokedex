@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/ba3937be7c.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Pokédex</title>
 </head>
+
 <body>
     <header>
-        <div class="area-logo">
-            <a href=""><img src="assets/images/logo-poke.png" alt="Logo Pokémon"></a>
+        <div class="areaLogo">
+            <a href="" title="Logo PokeAPI"><img src="assets/images/logo-poke.png" alt="Logo PokeAPI"></a>
         </div>
         <form method="" class="searchPoke">
             <input type="search" placeholder="Buscar Pokémon">
             <button>Buscar</button>
         </form>
         <select name="filterPoke" onchange="filterPoke(value)">
+            <option value="select">Buscar Por...</option>
             <option value="smallestNumber">Menor número primeiro</option>
             <option value="higherNumber">Maior número primeiro</option>
             <option value="a-z">A-Z</option>
@@ -27,34 +33,48 @@
     <nav>
         <div class="modalInfoPokes">
             <div class="closeModal">
-                <img src="assets/images/x-close.png" class="closeModal" alt="Fechar Modal">
+                <div class="close"><img src="assets/images/left-arrow.png" alt="Image back"> Voltar</div>
             </div>
-            <div class="areaInfoPokes">
-                <div class="modalNamePoke">Pikachu</div>
-                <img src="assets/images/pikachu.png" alt="Image Pokémon">
-                <div class="infoPoke">
-                    <div class="heightPoke">Peso:</div>
-                    <div class="weightPoke">Height:</div>
-                    <div class="stats">
-                        Características:
+            <div class="cardInfoPokes">
+                <div class="areaTop">
+                    <div class="areaName">
+                        <div class="name">Charmander</div>
+                            <div class="id"></div>
                     </div>
-                    <div class="moves">
-                        Movimentos:
+                    <div class="types">
+                        
                     </div>
-                    <div class="abilities">
-                        Habilidades:
-                    </div>
-                    <div class="baseExperience">
-                        Experiência:
+                </div>
+
+                <div class="areaBottom">
+                    <img src="" alt="Imagem Poke">
+                    <div class="infoPokes">
+                        <div class="info">
+                            <h3>Status</h3>
+                            <div class="stats"></div>
+                        </div>
+                        <div class="info">
+                            <h3>habilidades</h3>
+                            <div class="abilities"></div>
+                        </div>
+                        <div class="info">
+                            <h3>Movimentos</h3>
+                            <div class="moves"></div>
+                        </div>
+                        <div class="info">
+                            <h3>Informações</h3>
+                            <div class="moreInfo"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="areaPokes">
             <div class="cardPoke">
                 <figure>
                     <div class="areaImage">
-                        <img src="assets/images/pikachu.png" alt="Image Poke">
+                        <img src="" alt="Image Poke" class="imagePoke">
                     </div>
                     <figcaption>--</figcaption>
                 </figure>
@@ -63,9 +83,11 @@
                     <div class="type">--</div>
                 </div>
             </div>
+            <div class="warning"></div>
         </div>
     </nav>
 
     <script src="assets/js/poke.js"></script>
 </body>
+
 </html>
