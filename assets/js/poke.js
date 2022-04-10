@@ -202,7 +202,7 @@ function filterPoke(value) {
     switch (value) {
         // menor para maior
         case 'smallestNumber':
-            if( qsa('.areaPokes .cardPoke') > 0 ) {
+            if( qsa('.areaPokes .cardPoke').length > 0 ) {
                 removePokes();
             }
             showPokes(pokes);
@@ -210,7 +210,7 @@ function filterPoke(value) {
             // maior para menor
         case 'higherNumber':
             // Caso o pokemon pesquisado não exista e eu tentar filtrar por um desses casos, eu nao removo nada pois nao há nada na tela, pois o valor digitado anteriormente nao existia entao nada foi adicionado sendo assim dara erro ao tentar remover algo
-            if( qsa('.areaPokes .cardPoke') > 0 ) {
+            if( qsa('.areaPokes .cardPoke').length > 0 ) {
                 removePokes();
             }
             let higherNumber = [];
@@ -222,7 +222,7 @@ function filterPoke(value) {
             break;
             // A-Z
         case 'a-z':
-            if( qsa('.areaPokes .cardPoke') > 0 ) {
+            if( qsa('.areaPokes .cardPoke').length > 0 ) {
                 removePokes();
             }
             pokes.map((item) => {
@@ -239,7 +239,7 @@ function filterPoke(value) {
             break;
             //Z-A
         case 'z-a':
-            if( qsa('.areaPokes .cardPoke') > 0 ) {
+            if( qsa('.areaPokes .cardPoke').length > 0 ) {
                 removePokes();
             }
             pokes.map((item) => {
@@ -261,7 +261,7 @@ function filterPoke(value) {
 let form = qs('form');
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    namePoke = qs('input').value;
+    let namePoke = qs('input').value;
     /* quando pesquisado Remove os outros pokémons apenas se ja existir um na tela caso nao tenha nenhum e o usuario digite um existente, não removerá nada, so retornará o que foi buscado */
     if ( qsa('.areaPokes .cardPoke').length > 0 ) {
         removePokes();
