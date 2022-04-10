@@ -5,7 +5,6 @@ let qs = (el) => {
 let qsa = (el) => {
     return document.querySelectorAll(el);
 }
-
 // VARIÁVEIS GLOBAIS
 let pokes = [];
 // FAZENDO REQUISIÇÃO E JOGANDO NA TELA
@@ -24,22 +23,8 @@ async function getPokes() {
     showPokes(pokes);
 }
 getPokes();
-// Função que remove Pokes
-function removePokes() {
-    let cardsPoke = qsa('.areaPokes .cardPoke');
-    if( cardsPoke.length == 2 ) {
-        for( let i = 1; i <= cardsPoke.length - 1; i++ ) {
-            cardsPoke[i].remove();
-        }
-    } else {
-        for( let i = 1; i <= cardsPoke.length - 1; i++ ) {
-            cardsPoke[i].remove();
-        }
-    }
-}
 // Função que mapeia todos os pokemons vindos do json para jogar a informação de cada um na tela 
 function showPokes(pokes) {
-
     pokes.map((poke) => {
         // Adicionando as informações dos pokémons exobidos na tela
         let cardPoke = document.querySelector('.cardPoke').cloneNode(true);
@@ -119,6 +104,7 @@ function showPokes(pokes) {
         // Jogando o card na tela com as informações ja preenchidas
         qs('.areaPokes').append(cardPoke);
 
+
         // Ao clicar no card, abgre o modal com as informações do poke
             cardPoke.addEventListener('click', () => {
             qs('.areaPokes').style.display = 'none';
@@ -140,6 +126,7 @@ function showPokes(pokes) {
             qs('.areaBottom img').src = poke.sprites.other.home.front_default;
             // Adicionando as características dos pokémons
             qs('.areaBottom .stats').innerHTML = '';
+            // puxando um objeto com o nome da caracteristica e o valor para um array
             let stats = [];
             poke.stats.map((item) => {
                 stats.push({
@@ -147,6 +134,7 @@ function showPokes(pokes) {
                     valueStat:item.base_stat
                 })
             })
+            // mapeando o array com o nome e caracteristicas e jogando na tela
             for( let i = 0; i <= 5; i++ ) {
                 let stat = document.createElement('div');
                 stat.classList.add('descInfo');
@@ -155,6 +143,7 @@ function showPokes(pokes) {
             }
             // Adicionando as habilidades do pokémon
             qs('.areaBottom .abilities').innerHTML = '';
+            // caso pokémon tenha duas habilidades, adicione as duas 
             if ( poke.abilities.length > 1 ) {
                 for( let i = 0; i <= 1; i++ ) {
                     let ability = document.createElement('div');
@@ -163,13 +152,13 @@ function showPokes(pokes) {
                     qs('.areaBottom .abilities').append(ability);
                 }
             }
+            // caso pokémon tenha uma habilidade, adicione essa 
             if ( poke.abilities.length == 1 ) {
                 let ability = document.createElement('div');
                 ability.classList.add('descInfo');
                 ability.innerHTML = poke.abilities[0].ability.name;
                 qs('.areaBottom .abilities').append(ability);
             }
-        
             // Adicionando movimentos principais do pokémon
             qs('.areaBottom .moves').innerHTML = '';
             for( let i = 0; i <= 3; i++ ) {
@@ -178,7 +167,7 @@ function showPokes(pokes) {
                 move.innerHTML = poke.moves[i].move.name;
                 qs('.areaBottom .moves').append(move);
             }
-            // Adicionando as informações gerais do pokémon
+            // Adicionando as informações gerais do pokémon (peso, altura e experiência)
             qs('.areaBottom .moreInfo').innerHTML = '';
             let moreInfo = [];
             let heightPoke = poke.height * 0.1;
@@ -196,45 +185,34 @@ function showPokes(pokes) {
         })
         // Fechar modal com informações dos pokémons
         qs('.modalInfoPokes .close').addEventListener('click', () => {
-            //Removendo modal da tela 
             qs('.areaPokes').style.display = 'grid';
             qs('.modalInfoPokes').style.display = 'none';
         })
 
     })
 }
-
-// FUNÇÃO DE FILTRAR POKÉMON PESQUISADO
-let form = qs('form');
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    namePoke = qs('input').value;
-    removePokes();
-    // Verificando se o pokémon digitado existe no array de opções, se ele existe, retorna o objeto com suas informações
-    pokes.find((poke) => {
-        if (poke.name == namePoke) {
-            // Jogando o pokémon buscado na tela caso ele exista 
-            let pokeSelected = [];
-            pokeSelected.push(poke);
-            showPokes(pokeSelected);
-        }
-    })
-})
-
-// FUNÇÃO DE FILTRO
+// FILTRANDO POKÉMONS
+// Filtro (Menor até maior, maior ate menor, A-Z, Z-A)
 function filterPoke(value) {
-    cardsPoke = '';
+    /* Varíaveis para filtrar os pokes de A-Z, Z-A pegando o nome de cada, ordenando por ordem alfabética e verificando se há algum poke com aquele nome, se houver me retorne e puxe para o array */
     let namePokesAZ = [];
     let arrayPokesAZ = [];
     let namePokesZA = [];
     let arrayPokesZA = [];
     switch (value) {
+        // menor para maior
         case 'smallestNumber':
-            removePokes();
+            if( qsa('.areaPokes .cardPoke') > 0 ) {
+                removePokes();
+            }
             showPokes(pokes);
             break;
+            // maior para menor
         case 'higherNumber':
-            removePokes();
+            // Caso o pokemon pesquisado não exista e eu tentar filtrar por um desses casos, eu nao removo nada pois nao há nada na tela, pois o valor digitado anteriormente nao existia entao nada foi adicionado sendo assim dara erro ao tentar remover algo
+            if( qsa('.areaPokes .cardPoke') > 0 ) {
+                removePokes();
+            }
             let higherNumber = [];
             pokes.map((poke) => {
                 higherNumber.push(poke)
@@ -242,9 +220,11 @@ function filterPoke(value) {
             higherNumber.reverse();
             showPokes(higherNumber);
             break;
-
+            // A-Z
         case 'a-z':
-            removePokes();
+            if( qsa('.areaPokes .cardPoke') > 0 ) {
+                removePokes();
+            }
             pokes.map((item) => {
                 namePokesAZ.push(item.name);
                 namePokesAZ.sort();
@@ -257,9 +237,11 @@ function filterPoke(value) {
             });
             showPokes(arrayPokesAZ);
             break;
-
+            //Z-A
         case 'z-a':
-            removePokes();
+            if( qsa('.areaPokes .cardPoke') > 0 ) {
+                removePokes();
+            }
             pokes.map((item) => {
                 namePokesZA.push(item.name);
                 namePokesZA.sort();
@@ -275,4 +257,44 @@ function filterPoke(value) {
             break;
     }
 }
-
+// Filtrando pela lupa de pesquisa
+let form = qs('form');
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    namePoke = qs('input').value;
+    /* quando pesquisado Remove os outros pokémons apenas se ja existir um na tela caso nao tenha nenhum e o usuario digite um existente, não removerá nada, so retornará o que foi buscado */
+    if ( qsa('.areaPokes .cardPoke').length > 0 ) {
+        removePokes();
+    }
+    // Verificando se o pokémon digitado existe no array de opções, se ele existe, retorna o objeto com suas informações
+    let pokeSelected = [];
+    pokes.find((poke) => {
+        if (poke.name == namePoke) {
+            qs('.warning').style.display = 'none';
+            // Jogando o pokémon buscado na tela caso ele exista 
+            pokeSelected.push(poke);
+            showPokes(pokeSelected);
+        } 
+    })
+    // Se o poke digitado não existe dê o aviso
+    if ( pokeSelected.length == 0 ) {
+        qs('.warning').innerHTML = 'Desculpe, Pokémon não encontrado.';
+        qs('.warning').style.display = 'block'
+    }
+})
+// FUNÇÃO QUE REMOVE POKES
+function removePokes() { 
+    // Pegando todos os cards para verificar quantos existem e dar um loop nessa quantidade para remover todos
+    let cardsPoke = qsa('.areaPokes .cardPoke');
+    // Caso tenha 150 cards, ou seja, estiver em ordem (menor para maior, maior para menor, A-Z, Z-A), remover todos
+    if( cardsPoke.length == 150 ) {
+        for( let i = 0; i <= 149; i++ ) {
+            cardsPoke[i].remove();
+        }
+    // Caso tenha só 1 card, ou seja, o pokémon foi filtrado por procura na lupa retornando apenas 1, removo apenas esse 1
+    } else {
+        for( let i = 0; i <= 0; i++ ) {
+            cardsPoke[i].remove();
+        }
+    }
+}
