@@ -202,6 +202,7 @@ function filterPoke(value) {
     switch (value) {
         // menor para maior
         case 'smallestNumber':
+            qs('.warning').style.display = 'none';
             if( qsa('.areaPokes .cardPoke').length > 0 ) {
                 removePokes();
             }
@@ -209,6 +210,7 @@ function filterPoke(value) {
             break;
             // maior para menor
         case 'higherNumber':
+            qs('.warning').style.display = 'none';
             // Caso o pokemon pesquisado não exista e eu tentar filtrar por um desses casos, eu nao removo nada pois nao há nada na tela, pois o valor digitado anteriormente nao existia entao nada foi adicionado sendo assim dara erro ao tentar remover algo
             if( qsa('.areaPokes .cardPoke').length > 0 ) {
                 removePokes();
@@ -222,6 +224,7 @@ function filterPoke(value) {
             break;
             // A-Z
         case 'a-z':
+            qs('.warning').style.display = 'none';
             if( qsa('.areaPokes .cardPoke').length > 0 ) {
                 removePokes();
             }
@@ -239,6 +242,7 @@ function filterPoke(value) {
             break;
             //Z-A
         case 'z-a':
+            qs('.warning').style.display = 'none';
             if( qsa('.areaPokes .cardPoke').length > 0 ) {
                 removePokes();
             }
@@ -283,7 +287,7 @@ form.addEventListener('submit', (event) => {
     }
 })
 // FUNÇÃO QUE REMOVE POKES
-function removePokes() { 
+function removePokes() {
     // Pegando todos os cards para verificar quantos existem e dar um loop nessa quantidade para remover todos
     let cardsPoke = qsa('.areaPokes .cardPoke');
     // Caso tenha 150 cards, ou seja, estiver em ordem (menor para maior, maior para menor, A-Z, Z-A), remover todos

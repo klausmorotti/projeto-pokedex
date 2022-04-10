@@ -1,4 +1,4 @@
-- Aviso ao nao encontrar poke
+- Aviso ao nao encontrar poke //
 - responsividade bonita //
 - deixar modal fixo // 
 - requisição mais rapida
