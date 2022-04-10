@@ -10,6 +10,9 @@
     text-transform: capitalize;
 }
 /* HEADER */
+.model {
+    display:none;
+}
 header {
     z-index:2;
     position:fixed;
@@ -70,24 +73,16 @@ header select {
 /* MEIO (PRINCIPAL) */
 nav {
     margin-top:100px;
-    height:100vh;
     padding:50px;
 }
 .areaPokes {
     display:grid;
     grid-template-columns:repeat(6, 1fr);
-}
-.areaPokes .warning {
-    width:100%;
-    font-size:30px;
-    font-weight:600;
-    display:none;
+    gap:30px;
 }
 .areaPokes .cardPoke {
     max-width:250px;
     border-radius:20px;
-    margin-bottom:50px;
-    margin-right:20px;
     cursor:pointer;
 }
 .areaPokes .cardPoke:hover {
@@ -123,7 +118,7 @@ nav {
 }
 .areaPokes .cardPoke .namePoke {
     margin-top:10px;
-    font-size:25px;
+    font-size:22px;
     font-weight:500;
 }
 .areaPokes .cardPoke .typePoke {
@@ -148,7 +143,7 @@ nav {
     bottom:0;
     position:absolute;
     width:100%;
-    height: calc(100vh - 80px);
+    height:calc(100vh - 80px);
     justify-content:center;
     align-items:center;
 }
@@ -184,8 +179,7 @@ nav {
 .cardInfoPokes .areaBottom {
     border-bottom-left-radius:inherit;
     border-bottom-right-radius:inherit;
-    min-height: 50%;
-    height:auto;
+    height:50%;
     background-color:#F5F5F5;
     padding:30px;
 }
@@ -232,7 +226,7 @@ nav {
     margin-bottom:0;
 }
 .cardInfoPokes .areaBottom .infoPokes {
-    margin-top:30px;
+    margin-top:10px;
     width:100%;
     display:flex;
 }
@@ -261,46 +255,113 @@ nav {
 /* Responsivity */
 @media only screen and ( max-width:1200px ) {
     .areaPokes {
-        grid-template-columns:repeat(3, 1fr);
+        grid-template-columns:repeat(4, 1fr);
     }
-}
-@media only screen and ( max-width:900px ) {
-    .areaLogo {
-        display:none;
+    .modalInfoPokes {
+        overflow-y:auto;
     }
-    header select {
-        width:200px;
+    .modalInfoPokes .cardInfoPokes {
+        margin-top:30px;
+        width:80%;
     }
-    header .searchPoke {
-        width:200px;
+    .closeModal {
+        margin-top:20px;
+        height:50px;
     }
-}
-@media only screen and ( max-width:650px ) {
-    header {
+    .closeModal .close {
+        margin:15px 0 0 0;
+    }
+    .cardInfoPokes .areaName .name {
+        font-size:25px
+    }
+    .cardInfoPokes .areaBottom {
         height:auto;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
     }
-    header .searchPoke,
+    .cardInfoPokes .areaBottom img {
+        margin-top:-150px;
+        width:200px;
+        height:200px;
+    }
+    .cardInfoPokes .areaBottom .infoPokes {
+        flex-wrap:wrap;
+    }
+    .cardInfoPokes .areaBottom .infoPokes .info {
+        padding:15px;
+        min-width:50%;
+    }
+    .cardInfoPokes .areaBottom .infoPokes .info h3,
+    .cardInfoPokes .areaBottom .infoPokes .descInfo {
+        max-width:100%;
+    }
+}
+ @media only screen and ( max-width:900px ) {
+    header .searchPoke input {
+        width:200px;
+        font-size:15px;
+    }
+    header .searchPoke input::placeholder {
+        font-size:15px;
+    }
     header select {
-        margin:0;
+        width:150px;
     }
-    header .searchPoke {
-        margin-bottom:20px;
+    .areaPokes {
+         grid-template-columns:repeat(3, 1fr);
     }
-    header select {
-        width:300px;
-    }
+ }
+ @media only screen and ( max-width:650px ) {
+     header .areaLogo {
+         display:none;
+     }
     .areaPokes {
         grid-template-columns:repeat(2, 1fr);
     }
-}
-@media only screen and ( max-width:450px ) {
+    .cardInfoPokes .areaBottom img {
+        margin-top:-100px;
+        width:150px;
+        height:150px;
+    }
+    .cardInfoPokes .areaName .name {
+        font-size:20px
+    }
+    .cardInfoPokes .areaTop .types {
+        display:inline-block;
+        flex-direction:column;
+    }
+    .cardInfoPokes .areaTop .types .type:first-child {
+        margin:0 0 10px 0;
+    }
+ }
+ @media only screen and ( max-width:520px ) {
+     header {
+         height:auto;
+         flex-direction:column;
+     }
+     header .searchPoke {
+         width:100%;
+         margin-bottom:30px;
+     }
+     header .searchPoke input {
+         width:100%;
+     }
+     header select {
+         width:100%;
+         margin:0;
+     }
+     nav {
+         margin-top:160px;
+     }
     .areaPokes {
         grid-template-columns:repeat(1, 1fr);
     }
     .areaPokes .cardPoke {
-        margin-right:0;
+        width:100%;
+        margin:auto;
     }
-} 
+    .modalInfoPokes .cardInfoPokes {
+        height: calc(100vh - 40vh);
+    }
+    .cardInfoPokes .areaBottom .infoPokes .info {
+        min-width:100%;
+    }
+ }

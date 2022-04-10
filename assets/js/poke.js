@@ -26,7 +26,7 @@ async function getPokes() {
 getPokes();
 // Função que remove Pokes
 function removePokes() {
-    let cardsPoke = qsa('.cardPoke');
+    let cardsPoke = qsa('.areaPokes .cardPoke');
     if( cardsPoke.length == 2 ) {
         for( let i = 1; i <= cardsPoke.length - 1; i++ ) {
             cardsPoke[i].remove();
@@ -123,7 +123,6 @@ function showPokes(pokes) {
             cardPoke.addEventListener('click', () => {
             qs('.areaPokes').style.display = 'none';
             qs('.modalInfoPokes').style.display = 'flex';
-            qs('body').style.overflow =  'hidden';
             qs('.modalInfoPokes .areaTop').style.backgroundColor = cardPoke.querySelector('.areaImage').style.backgroundColor;
             // Adiocionando nome do pokémon
             qs('.modalInfoPokes .name').innerHTML = poke.name;
@@ -198,7 +197,6 @@ function showPokes(pokes) {
         // Fechar modal com informações dos pokémons
         qs('.modalInfoPokes .close').addEventListener('click', () => {
             //Removendo modal da tela 
-            qs('body').style.overflow = 'auto';
             qs('.areaPokes').style.display = 'grid';
             qs('.modalInfoPokes').style.display = 'none';
         })
