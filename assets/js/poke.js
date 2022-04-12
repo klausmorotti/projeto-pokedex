@@ -199,6 +199,10 @@ function filterPoke(value) {
     let arrayPokesAZ = [];
     let namePokesZA = [];
     let arrayPokesZA = [];
+    if( qs('.modalInfoPokes').style.display = 'flex' ) {
+        qs('.modalInfoPokes').style.display = 'none';
+        qs('.areaPokes').style.display = 'grid';
+    }
     switch (value) {
         // menor para maior
         case 'smallestNumber':

@@ -148,7 +148,7 @@ nav {
     right:0;
     bottom:0;
     width:100%;
-    height:auto;
+    min-height:calc(100vh - 80px);
     align-items:center;
 }
 .modalInfoPokes .closeModal {
@@ -354,7 +354,7 @@ nav {
     }
     .modalInfoPokes {
         top:150px;
-        height:auto;
+        min-height: calc(100vh - 150px);
     }
     .cardInfoPokes .areaBottom .infoPokes .info {
         min-width:100%;
