@@ -40,6 +40,7 @@ header .areaLogo img {
     max-height:100%;
 }
 header .searchPoke input {
+    text-transform:lowercase;
     outline:none;
     width:300px;
     padding:5px 10px;
@@ -101,12 +102,6 @@ nav {
     max-width:inherit;
     border-top-left-radius:20px;
     border-top-right-radius:20px;
-}
-.areaImage .areaFavorites {
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-    width:100%;
 }
 .areaPokes .cardPoke figure {
     width:100%;
