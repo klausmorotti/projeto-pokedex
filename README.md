@@ -7,7 +7,7 @@
 
 ## 📄 Explicação
 
-Desenvolvi o projeto com objetivo de praticar meus conhecimentos em JavaScript, principalmente a utilização de API's e manipulação de arrays
+Desenvolvi o projeto com objetivo de praticar meus conhecimentos em JavaScript, principalmente a utilização de API's e manipulação de arrays.
 
 O projeto contém as seguintes funcionalidades:
 
@@ -19,16 +19,24 @@ O projeto contém as seguintes funcionalidades:
 * Filtro de pokémons por maior ID
 * Modal de informações detalhadas dos pokémons
 
+## 📁 Páginas
+
+O site tem no total 1 página, sendo ela
+
+- **Página principal:** Página principal onde conseguimos acessar as informações dos pokémons desejados e filtrando qual queremos por meio dos filtros de busca.
+
 ## 🎯 Etapas do projeto
 
-✔️ Criando a interface do projeto </br>
-✔️ Fazendo requisição para API </br>
-✔️ Manipulando dados retornados pela API </br>
-✔️ Mostrando o resultado na tela </br>
-✔️ Criação da lógica para criação de filtros dos pokémons </br>
-✔️ Adicionando clique nos cards dos pokémons </br>
-✔️ Modal de informaçõe detalhadas dos pokémons ao clicar no card </br>
-✔️ Responsivizando projeto
+✔️ Criando a interface do projeto. </br>
+✔️ Fazendo requisição para API. </br>
+✔️ Manipulando dados retornados pela API. </br>
+✔️ Mostrando o resultado na tela. </br>
+✔️ Criação da lógica para criação de filtros dos pokémons. </br>
+✔️ Adicionando clique nos cards dos pokémons. </br>
+✔️ Modal de informaçõe detalhadas dos pokémons ao clicar no card. </br>
+✔️ Responsivizando projeto. </br>
+✔️ Projeto finalizado. </br>
+
 
 ## 🚀 Tecnologias
 * <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank">HTML</a>
@@ -56,3 +64,5 @@ O projeto contém as seguintes funcionalidades:
 ## 📝 Licença
 
 Este projeto está sob licença. Consulte o arquivo <a href="https://github.com/klausmorotti/projeto-pokedex/blob/master/LICENSE">LICENSE</a> para obter mais detalhes.
+
+<a href="#top">Volte para o topo</a>
