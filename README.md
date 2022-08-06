@@ -1,6 +1,6 @@
 <h1 align="center">POKÉDEX</h1>
 
-
+<img src="assets/images/pokedex-gif.gif" alt="Video Projeto" width="100%" height="500">
 
 > 🔎 Uma Pokedex dinâmica com utilização de API, filtros de buscas e informações detalhadas dos 150 pokémons principais. <br>
 🗔 Confira a aplicação: https://klausmorotti.github.io/projeto-pokedex/ <br>
