@@ -40,7 +40,6 @@ header .areaLogo img {
     max-height:100%;
 }
 header .searchPoke input {
-    text-transform:lowercase;
     outline:none;
     width:300px;
     padding:5px 10px;
