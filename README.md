@@ -1,8 +1,11 @@
-# POKÉDEX
+<h1 align="center">POKÉDEX</h1>
+
+
+
+> 🔎 Uma Pokedex dinâmica com utilização de API, filtros de buscas e informações detalhadas dos 150 pokémons principais. <br>
+🗔 Confira a aplicação: https://klausmorotti.github.io/projeto-pokedex/ <br>
 
 ## 📄 Explicação
-
-Uma Pokedex dinâmica com utilização de API, filtros de buscas e informações detalhadas dos 150 pokémons principais.
 
 Desenvolvi o projeto com objetivo de praticar meus conhecimentos em JavaScript, principalmente a utilização de API's e manipulação de arrays
 
